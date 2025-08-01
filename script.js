@@ -16,7 +16,7 @@ function showSection(sectionName) {
   const navMenu = document.getElementById('navMenu');
   navMenu.classList.remove('active');
   
-  // Scroll to top
+  // Scroll to top smoothly
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
   
@@ -32,42 +32,8 @@ document.addEventListener('click', function(event) {
   const menuToggle = document.querySelector('.menu-toggle');
   
   if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-      navMenu.classList.remove('active');
+    navMenu.classList.remove('active');
   }
-});
-  
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// Add loading animation to buttons
-function addLoadingState(button) {
-  const originalText = button.textContent;
-  button.textContent = 'Loading...';
-  button.disabled = true;
-  
-  setTimeout(() => {
-    button.textContent = originalText;
-    button.disabled = false;
-  }, 2000);
-}
-  
-// Add event listeners to project links
-document.querySelectorAll('.project-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    addLoadingState(this);
-  });
 });
   
   // Keyboard navigation
@@ -75,19 +41,15 @@ document.addEventListener('keydown', function(e) {
   if (e.altKey) {
     switch(e.key) {
       case '1':
-        e.preventDefault();
         showSection('home');
         break;
       case '2':
-        e.preventDefault();
         showSection('about');
         break;
       case '3':
-        e.preventDefault();
         showSection('projects');
         break;
       case '4':
-        e.preventDefault();
         showSection('contact');
         break;
     }
