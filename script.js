@@ -56,6 +56,7 @@ document.addEventListener('keydown', function(e) {
   }
 });
   
+    
 // Add entrance animations
 function animateOnScroll() {
   const elements = document.querySelectorAll('.project-card, .skill-item, .contact-item');
